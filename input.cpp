@@ -49,9 +49,7 @@ void fill_struct_from_buffer( Line *line, int number_of_lines, char *buffer )
     {
         line[j].str = buffer;
 
-        while (*buffer++ != '\0')
+        while (*(buffer++) != '\0')
             ;
-
-        buffer++;
     }
 }

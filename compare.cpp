@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 
 #include "compare.hpp"
 #include "input.hpp"
@@ -12,6 +13,8 @@ int compare( Line string_1, Line string_2 )
 
         while (!isalpha(*(string_2.str)) && *(string_2.str) != '\0')
             string_2.str++;
+
+        printf("%c, %c\n", *(string_1.str), *(string_2.str));
 
         if (*(string_1.str) == '\0' && *(string_2.str) == '\0')
             return 0;
