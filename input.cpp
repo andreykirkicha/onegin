@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
 #include "input.hpp"
 
-char *input_to_buffer( char *FileName, size_t *buffer_length )
+char *input_to_buffer( char *file_name, size_t *buffer_length )
 {
-    FILE *f = fopen(FileName,"r+b");
+    FILE *f = fopen(file_name, "r+b");
     struct stat stbuf;
 
     fstat(fileno(f), &stbuf);
@@ -40,11 +43,11 @@ int get_number_of_lines( char *buffer, size_t buffer_length )
     return number_of_lines;
 }
 
-void fill_struct_from_buffer( Line **line, int number_of_lines, char *buffer )
+void fill_struct_from_buffer( Line *line, int number_of_lines, char *buffer )
 {
     for (int j = 0; j < number_of_lines; j++)
     {
-        line[j]->str = buffer;
+        line[j].str = buffer;
 
         while (*buffer++ != '\0')
             ;
